@@ -59,7 +59,16 @@ void MainWindow::slotUpdateMenu()
     int index = ui->menuComboBox->currentIndex();
     ui->menuComboBox->setMenu(mRoot);
     slotPrintMenu();
-    ui->menuComboBox->setCurrentIndex(index);
+    if (index == -1)                                                  //
+    {                                                                 //
+        ui->menuComboBox->setCurrentIndex(0);                         // provides setting default item of combo box as it's first one.
+        menuElementSelected();                                        // makes editor delegate visit default element of combo box.
+    }                                                                 //
+    else
+    {
+        ui->menuComboBox->setCurrentIndex(index);
+    }
+
 }
 
 void MainWindow::slotAddNewItem()
