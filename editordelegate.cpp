@@ -12,6 +12,7 @@ EditorDelegate::EditorDelegate(QWidget *parent) :
     connect(ui->menuItemNameLineEdit, SIGNAL(textChanged(QString)), this, SIGNAL(itemChanged()), Qt::UniqueConnection);
     connect(ui->menuItemDescriptionLineEdit, SIGNAL(textChanged(QString)), this, SIGNAL(itemChanged()), Qt::UniqueConnection);
     connect(ui->menuItemPriceSpinBox, SIGNAL(valueChanged(double)), this, SIGNAL(itemChanged()), Qt::UniqueConnection);
+    connect(ui->discountCheckBox, SIGNAL(toggled(bool)), ui->discountSpinBox, SLOT(setEnabled(bool)), Qt::UniqueConnection);
 }
 
 EditorDelegate::~EditorDelegate()

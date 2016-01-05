@@ -2,7 +2,7 @@
 #define TEXTEDITPRINTMENUVISITOR_H
 
 #include "menuvisitor.h"
-
+#include "DiscountMenuItem.h"
 #include<QString>
 
 class Composite;
@@ -16,10 +16,13 @@ public:
     TextEditPrintMenuVisitor(QPlainTextEdit *textEdit);
     void visit(MenuItem *item);
     void visit(Menu *menu);
+    void visit(DiscountMenuItem *item);
 
 private:
     QPlainTextEdit *mTextEdit;
     QString indent(Composite *item) const;
+    QString indent(DiscountMenuItem *item) const;
+    const QString DISCOUNT_TEXT = QStringLiteral("!!!Discount!!!");
 };
 
 

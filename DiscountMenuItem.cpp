@@ -17,3 +17,8 @@ void DiscountMenuItem::setDiscount(double discount)
     mDiscount = discount;
 }
 
+void DiscountMenuItem::accept(MenuVisitor *visitor)
+{
+    visitor->visit(this);
+}
+

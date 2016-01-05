@@ -1,6 +1,7 @@
 #ifndef DISCOUNTMENUITEM_H
 #define DISCOUNTMENUITEM_H
 #include "menuitem.h"
+#include "menuvisitor.h"
 
 class DiscountMenuItem : public MenuItem
 {
@@ -9,6 +10,8 @@ public:
 
     double discount() const;
     void setDiscount(double discount);
+
+    void accept(MenuVisitor *visitor) override;
 
 private:
     double mDiscount;
