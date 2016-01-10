@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     texteditprintmenuvisitor.cpp \
     menucombobox.cpp \
     editordelegate.cpp \
-    adddialog.cpp
+    adddialog.cpp \
+    aboutdialog.cpp
 
 HEADERS  += mainwindow.h \
     consoleprintmenuvisitor.h \
@@ -35,8 +36,16 @@ HEADERS  += mainwindow.h \
     texteditprintmenuvisitor.h \
     menucombobox.h \
     editordelegate.h \
-    adddialog.h
+    adddialog.h \
+    aboutdialog.h
 
 FORMS    += mainwindow.ui \
     editordelegate.ui \
-    adddialog.ui
+    adddialog.ui \
+    aboutdialog.ui
+
+MAJOR_VERSION = 1
+MINOR_VERSION = 0
+DEFINES += \
+MAJOR_VERSION=$$MAJOR_VERSION \
+MINOR_VERSION=$$MINOR_VERSION
