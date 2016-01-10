@@ -28,6 +28,10 @@ private slots:
     void slotItemChanged();
     void slotSaveEditedItem();
 
+    void slotHelp();
+
+
+
 private:
     void createMenu();
 

@@ -6,6 +6,7 @@
 #include "menu.h"
 #include "menuitem.h"
 #include "adddialog.h"
+#include"aboutdialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(slotSaveEditedItem()), Qt::UniqueConnection);
     connect(ui->menuEditorDelegate, SIGNAL(itemChanged()),
             this, SLOT(slotItemChanged()), Qt::UniqueConnection);
+    connect(ui->actionAbout_Menu_Editor,SIGNAL(triggered(bool)),
+            this, SLOT(slotHelp()),Qt::UniqueConnection);
+    connect(ui->actionAbout_Qt,SIGNAL(triggered(bool)),
+            qApp,SLOT(aboutQt()),Qt::UniqueConnection);
 }
 
 MainWindow::~MainWindow()
@@ -90,6 +95,14 @@ void MainWindow::slotSaveEditedItem()
     slotUpdateMenu();
 }
 
+void MainWindow::slotHelp()
+{
+    AboutDialog aboutDialog(this);
+    aboutDialog.setWindowTitle("About");
+
+    aboutDialog.exec();
+}
+
 void MainWindow::createMenu()
 {
     mRoot = new Menu("MAIN MENU");
@@ -126,3 +139,5 @@ void MainWindow::createMenu()
 
     mRoot->addSubitem(lBeveragesMenu);
 }
+
+
