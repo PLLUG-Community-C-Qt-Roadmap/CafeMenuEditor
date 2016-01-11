@@ -26,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(slotSaveEditedItem()), Qt::UniqueConnection);
     connect(ui->menuEditorDelegate, SIGNAL(itemChanged()),
             this, SLOT(slotItemChanged()), Qt::UniqueConnection);
+    connect(ui->action_New,SIGNAL(triggered(bool)),
+            this,SLOT(slotNewMenu()),Qt::UniqueConnection);
 }
 
 MainWindow::~MainWindow()
@@ -125,4 +127,11 @@ void MainWindow::createMenu()
     lBeveragesMenu->addSubitem(lAlcoDrinksMenu);
 
     mRoot->addSubitem(lBeveragesMenu);
+}
+void MainWindow::slotNewMenu(){
+    ui->menuComboBox->clear();
+    ui->menuEditorDelegate->clear();
+    ui->menuTextEdit->clear();
+   delete this->mRoot;
+    this->mRoot=nullptr;
 }

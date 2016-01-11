@@ -27,7 +27,7 @@ private slots:
 
     void slotItemChanged();
     void slotSaveEditedItem();
-
+     void slotNewMenu();
 private:
     void createMenu();
 

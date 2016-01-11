@@ -60,13 +60,14 @@
      <x>0</x>
      <y>0</y>
      <width>823</width>
-     <height>29</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>&amp;Fi&amp;le</string>
     </property>
+    <addaction name="action_New"/>
     <addaction name="action_Open"/>
     <addaction name="action_Save"/>
     <addaction name="separator"/>
@@ -118,6 +119,14 @@
   <action name="action_Remove">
    <property name="text">
     <string>&amp;Remove</string>
+   </property>
+  </action>
+  <action name="action_New">
+   <property name="text">
+    <string>&amp;New...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
  </widget>
