@@ -14,10 +14,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     resize(800, 600);
-
-    createMenu();
-    slotUpdateMenu();
-
     connect(ui->menuComboBox, SIGNAL(currentIndexChanged(int)),
             this, SLOT(menuElementSelected()), Qt::UniqueConnection);
     connect(ui->action_Add, SIGNAL(triggered(bool)),
@@ -26,6 +22,11 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(slotSaveEditedItem()), Qt::UniqueConnection);
     connect(ui->menuEditorDelegate, SIGNAL(itemChanged()),
             this, SLOT(slotItemChanged()), Qt::UniqueConnection);
+    connect(ui->actionView_example_menu,SIGNAL(triggered(bool)),
+            this,SLOT(slotDeleteMenuItem()),Qt::UniqueConnection);
+    connect(ui->actionView_example_menu,SIGNAL(triggered(bool)),
+            this,SLOT(slotPrintMenu()));
+
 }
 
 MainWindow::~MainWindow()
@@ -36,6 +37,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::slotPrintMenu()
 {
+    createMenu();
     ui->menuTextEdit->clear();
     TextEditPrintMenuVisitor visitor (ui->menuTextEdit);
     MenuIterator iterator(mRoot);
@@ -125,4 +127,8 @@ void MainWindow::createMenu()
     lBeveragesMenu->addSubitem(lAlcoDrinksMenu);
 
     mRoot->addSubitem(lBeveragesMenu);
+}
+void MainWindow::slotDeleteMenuItem()
+{
+    delete mRoot;
 }

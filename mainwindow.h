@@ -18,15 +18,13 @@ public:
 
 public slots:
     void slotPrintMenu();
-
 private slots:
     void menuElementSelected();
-
     void slotUpdateMenu();
     void slotAddNewItem();
-
     void slotItemChanged();
     void slotSaveEditedItem();
+    void slotDeleteMenuItem();
 
 private:
     void createMenu();
