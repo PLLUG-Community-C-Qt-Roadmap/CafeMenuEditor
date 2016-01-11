@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/Icons">
+        <file>question43.png</file>
+        <file>test20.png</file>
+        <file>thoughts.png</file>
+        <file>verified9.png</file>
+        <file>notes16.png</file>
+        <file>write12.png</file>
+        <file>add133.png</file>
+        <file>minus75.png</file>
+    </qresource>
+</RCC>
