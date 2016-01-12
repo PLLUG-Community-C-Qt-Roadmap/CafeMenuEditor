@@ -16,6 +16,7 @@ public:
 
     Composite* currentMenuItem() const;
 
+    void updateComboBox();
 private:
     void populateComboBox();
 

@@ -29,6 +29,16 @@
          <widget class="EditorDelegate" name="menuEditorDelegate" native="true"/>
         </item>
         <item>
+         <widget class="QPushButton" name="deletePushButton">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Delete</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="savePushButton">
           <property name="text">
            <string>Save</string>
@@ -60,7 +70,7 @@
      <x>0</x>
      <y>0</y>
      <width>823</width>
-     <height>29</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

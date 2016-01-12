@@ -26,6 +26,12 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(slotSaveEditedItem()), Qt::UniqueConnection);
     connect(ui->menuEditorDelegate, SIGNAL(itemChanged()),
             this, SLOT(slotItemChanged()), Qt::UniqueConnection);
+    connect(ui->menuComboBox, SIGNAL(activated(int)),
+            this, SLOT(slotEnableDeleteButton()), Qt::UniqueConnection);
+    connect(ui->deletePushButton,SIGNAL(clicked(bool)),
+            this,SLOT(slotDisableDeleteButton()), Qt::UniqueConnection);
+    connect(ui->deletePushButton,SIGNAL(clicked(bool)),
+            this,SLOT(slotDeleteButton()), Qt::UniqueConnection);
 }
 
 MainWindow::~MainWindow()
@@ -44,6 +50,24 @@ void MainWindow::slotPrintMenu()
         auto item =  iterator.next();
         item->accept(&visitor);
     }
+}
+
+void MainWindow::slotDeleteButton()
+{
+    int elemIndex=ui->menuComboBox->currentIndex();
+    MenuIterator it(mRoot);
+    for(int i=0;i<elemIndex;++i)
+    {
+        if(it.hasNext())
+        it.next();
+    }
+    Composite *child=it.next();
+    Composite *parent=child->parent();
+    parent->removeSubitem(child->title());
+
+    //крешиться, якшо видаляємо beverages
+    slotPrintMenu();
+    ui->menuComboBox->updateComboBox();
 }
 
 void MainWindow::menuElementSelected()
@@ -88,6 +112,16 @@ void MainWindow::slotSaveEditedItem()
     ui->savePushButton->setEnabled(false);
     ui->menuEditorDelegate->slotSave();
     slotUpdateMenu();
+}
+
+void MainWindow::slotEnableDeleteButton()
+{
+    ui->deletePushButton->setEnabled(true);
+}
+
+void MainWindow::slotDisableDeleteButton()
+{
+   ui->deletePushButton->setEnabled(false);
 }
 
 void MainWindow::createMenu()

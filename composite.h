@@ -17,6 +17,7 @@ public:
 
     void addSubitem(Composite *pItem);
     int subitemsCount() const;
+
     Composite *child(int pIndex) const;
     Composite *parent() const;
 
@@ -25,6 +26,11 @@ public:
 
 
     virtual void accept(MenuVisitor *visitor) = 0;
+
+    void removeSubitem(const std::string &title);
+
+private:
+    void deleteChildren();
 
 private:
     std::string mTitle;

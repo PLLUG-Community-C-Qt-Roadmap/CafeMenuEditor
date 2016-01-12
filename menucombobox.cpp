@@ -32,6 +32,12 @@ Composite *MenuComboBox::currentMenuItem() const
     return mItemByIndex.value(itemId);
 }
 
+void MenuComboBox::updateComboBox()
+{
+    clear();
+    populateComboBox();
+}
+
 void MenuComboBox::populateComboBox()
 {
     if (mRoot) // Перевіряємо чи кореневий елемент встановлено

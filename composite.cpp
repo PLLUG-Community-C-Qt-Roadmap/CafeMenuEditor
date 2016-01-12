@@ -78,3 +78,30 @@ void Composite::setTitle(const std::string &title)
 {
     mTitle = title;
 }
+
+void Composite::removeSubitem(const std::string &title)
+{
+    std::vector<Composite*>::iterator it;
+    for(it=mListSubitems.begin();it!=mListSubitems.end();++it)
+    {
+        if((*it)->title()==title)
+        {
+            (*it)->deleteChildren();
+            delete (*it);
+            mListSubitems.erase(it);
+            return;
+        }
+    }
+}
+
+
+
+void Composite::deleteChildren()
+{
+    for(auto child: mListSubitems)
+    {
+        child->deleteChildren();
+        delete child;
+    }
+    mListSubitems.clear();
+}

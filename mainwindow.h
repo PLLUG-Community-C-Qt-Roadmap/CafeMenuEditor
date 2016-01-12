@@ -18,6 +18,7 @@ public:
 
 public slots:
     void slotPrintMenu();
+    void slotDeleteButton();
 
 private slots:
     void menuElementSelected();
@@ -28,6 +29,8 @@ private slots:
     void slotItemChanged();
     void slotSaveEditedItem();
 
+    void slotEnableDeleteButton();
+    void slotDisableDeleteButton();
 private:
     void createMenu();
 
