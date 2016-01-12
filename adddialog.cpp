@@ -69,9 +69,11 @@ void AddDialog::slotNextClicked()
     {
     case MenuType:
         mNewItem = new Menu("");
+        ui->typeLabel->setText("Menu");// Add type title
         break;
     case MenuItemType:
         mNewItem = new MenuItem("", 0.0);
+        ui->typeLabel->setText("Menu Item"); // Add type title
         break;
     default:
         break;
@@ -112,6 +114,7 @@ void AddDialog::showPage2()
     ui->nextPushButton->setVisible(false);
     ui->okPushButton->setVisible(true);
     ui->okPushButton->setEnabled(true);
+    ui->parentLabel->setText(QString::fromStdString(mParent->title()));// Add Parent title
 }
 
 void AddDialog::clear()
