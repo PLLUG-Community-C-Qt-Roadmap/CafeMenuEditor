@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/Icons">
+        <file>C:/Users/user/Downloads/png/c/cross.png</file>
+        <file>C:/Users/user/Downloads/png/c/documents11.png</file>
+        <file>C:/Users/user/Downloads/png/c/maths87.png</file>
+        <file>C:/Users/user/Downloads/png/c/online16.png</file>
+        <file>C:/Users/user/Downloads/png/c/question43.png</file>
+        <file>C:/Users/user/Downloads/png/c/test20.png</file>
+        <file>C:/Users/user/Downloads/png/c/thoughts.png</file>
+        <file>C:/Users/user/Downloads/png/c/verified9.png</file>
+        <file>C:/Users/user/Downloads/png/book154.png</file>
+        <file>C:/Users/user/Downloads/png/contract11.png</file>
+        <file>C:/Users/user/Downloads/png/envelope33.png</file>
+        <file>C:/Users/user/Downloads/png/find3.png</file>
+        <file>C:/Users/user/Downloads/png/idea13.png</file>
+    </qresource>
+</RCC>

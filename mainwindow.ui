@@ -97,22 +97,37 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>false</bool>
+    <bool>true</bool>
    </attribute>
    <addaction name="action_Exit"/>
+   <addaction name="separator"/>
+   <addaction name="action_Add"/>
+   <addaction name="action_Remove"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_Open">
+   <property name="icon">
+    <iconset resource="myicon.qrc">
+     <normaloff>:/Icons/notes16.png</normaloff>:/Icons/notes16.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Open...</string>
    </property>
   </action>
   <action name="action_Save">
+   <property name="icon">
+    <iconset resource="myicon.qrc">
+     <normaloff>:/Icons/verified9.png</normaloff>:/Icons/verified9.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Save...</string>
    </property>
   </action>
   <action name="action_Exit">
+   <property name="icon">
+    <iconset resource="myicon.qrc">
+     <normaloff>:/Icons/test20.png</normaloff>:/Icons/test20.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Exit</string>
    </property>
@@ -121,11 +136,19 @@
    </property>
   </action>
   <action name="action_Add">
+   <property name="icon">
+    <iconset resource="myicon.qrc">
+     <normaloff>:/Icons/add133.png</normaloff>:/Icons/add133.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Add...</string>
    </property>
   </action>
   <action name="action_Remove">
+   <property name="icon">
+    <iconset resource="myicon.qrc">
+     <normaloff>:/Icons/minus75.png</normaloff>:/Icons/minus75.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Remove</string>
    </property>
@@ -145,7 +168,9 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="myicon.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>action_Exit</sender>
