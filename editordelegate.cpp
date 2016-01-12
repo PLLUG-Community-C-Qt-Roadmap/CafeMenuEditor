@@ -12,6 +12,8 @@ EditorDelegate::EditorDelegate(QWidget *parent) :
     connect(ui->menuItemNameLineEdit, SIGNAL(textChanged(QString)), this, SIGNAL(itemChanged()), Qt::UniqueConnection);
     connect(ui->menuItemDescriptionLineEdit, SIGNAL(textChanged(QString)), this, SIGNAL(itemChanged()), Qt::UniqueConnection);
     connect(ui->menuItemPriceSpinBox, SIGNAL(valueChanged(double)), this, SIGNAL(itemChanged()), Qt::UniqueConnection);
+
+    connect(ui->menuNameLineEdit, SIGNAL(textChanged(QString)), this, SIGNAL(itemChanged()), Qt::UniqueConnection);
 }
 
 EditorDelegate::~EditorDelegate()
@@ -42,6 +44,8 @@ void EditorDelegate::visit(Menu *menu)
     clear();
 
     ui->stackedWidget->setCurrentWidget(ui->pageMenu);
+    ui->menuNameLineEdit->setText(QString::fromStdString(menu->title()));
+    ui->menuChildrenCount->setText(QString::number(menu->subitemsCount()));
 
     mEditedMenu = menu;
 
@@ -61,5 +65,10 @@ void EditorDelegate::slotSave()
         mEditedMenuItem->setTitle(ui->menuItemNameLineEdit->text().toStdString());
         mEditedMenuItem->setDescription(ui->menuItemDescriptionLineEdit->text().toStdString());
         mEditedMenuItem->setPrice(ui->menuItemPriceSpinBox->value());
+    }
+
+    if (mEditedMenu)
+    {
+        mEditedMenu->setTitle(ui->menuNameLineEdit->text().toStdString());
     }
 }
