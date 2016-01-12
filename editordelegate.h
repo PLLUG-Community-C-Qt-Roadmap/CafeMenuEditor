@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "menuvisitor.h"
+#include "DiscountMenuItem.h"
 
 namespace Ui {
 class EditorDelegate;
@@ -17,6 +18,7 @@ public:
     ~EditorDelegate();
 
     virtual void visit(MenuItem *);
+    virtual void visit(DiscountMenuItem *);
     virtual void visit(Menu *);
 
     void clear();

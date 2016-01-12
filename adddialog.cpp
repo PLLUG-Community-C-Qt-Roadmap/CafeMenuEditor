@@ -2,7 +2,7 @@
 #include "ui_adddialog.h"
 
 #include "menu.h"
-#include "menuitem.h"
+#include "DiscountMenuItem.h"
 
 enum MenuItemType{MenuType = 0, MenuItemType};
 
@@ -71,7 +71,7 @@ void AddDialog::slotNextClicked()
         mNewItem = new Menu("");
         break;
     case MenuItemType:
-        mNewItem = new MenuItem("", 0.0);
+        mNewItem = new DiscountMenuItem("", 0.0, 0.0);
         break;
     default:
         break;

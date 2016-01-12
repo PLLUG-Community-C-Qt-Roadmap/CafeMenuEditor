@@ -75,7 +75,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>&amp;Fi&amp;le</string>
+     <string>&amp;File</string>
     </property>
     <addaction name="action_Open"/>
     <addaction name="action_Save"/>
