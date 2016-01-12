@@ -14,6 +14,7 @@ MenuItem::MenuItem(const std::string &pTitle, double pPrice, std::string pDescri
       mPrice(pPrice),
       mDescription(pDescription)
 {
+    setTreeType("MenuItem");
 }
 
 /*!

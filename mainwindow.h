@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include<QJsonArray>
 namespace Ui {
 class MainWindow;
 }
@@ -24,10 +25,11 @@ private slots:
 
     void slotUpdateMenu();
     void slotAddNewItem();
+   void saveMeBabe();
 
     void slotItemChanged();
     void slotSaveEditedItem();
-
+   QJsonArray writeJson(Composite* component);
 private:
     void createMenu();
 

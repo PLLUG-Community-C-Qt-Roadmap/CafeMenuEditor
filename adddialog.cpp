@@ -4,7 +4,7 @@
 #include "menu.h"
 #include "menuitem.h"
 
-enum MenuItemType{MenuType = 0, MenuItemType};
+enum MenuItemType{MenuType = 0, MenuItemType}; //може набувати значень 0 і 1
 
 AddDialog::AddDialog(QWidget *parent) :
     QDialog(parent),
@@ -13,7 +13,7 @@ AddDialog::AddDialog(QWidget *parent) :
     mNewItem{nullptr},
     mParent{nullptr}
 {
-    ui->setupUi(this);
+    ui->setupUi(this); //функція що прописана у ui_adddialog.h
     setWindowTitle("Add...");
 
     ui->typeComboBox->addItem("Menu Item", MenuItemType);
@@ -45,7 +45,6 @@ Composite *AddDialog::newMenuItem() const
 void AddDialog::showEvent(QShowEvent *)
 {
     clear();
-
     showPage1();
 }
 

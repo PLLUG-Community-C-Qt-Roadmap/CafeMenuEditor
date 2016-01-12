@@ -21,13 +21,15 @@ public:
     Composite *parent() const;
 
     std::string title() const;
+    std::string TreeType() const;
     void setTitle(const std::string &title);
-
+   void setTreeType(const std::string &type);
 
     virtual void accept(MenuVisitor *visitor) = 0;
 
 private:
     std::string mTitle;
+    std::string mTreeType;
     Composite *mParent;
     std::vector<Composite *> mListSubitems;
 };

@@ -1,12 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include<QFileDialog>
 #include "texteditprintmenuvisitor.h"
 #include "menuiterator.h"
 #include "menu.h"
 #include "menuitem.h"
 #include "adddialog.h"
-
+#include<QString>
+#include <QJsonObject>
+#include<QJsonValue>
+#include<QFile>
+#include<QJsonDocument>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -26,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(slotSaveEditedItem()), Qt::UniqueConnection);
     connect(ui->menuEditorDelegate, SIGNAL(itemChanged()),
             this, SLOT(slotItemChanged()), Qt::UniqueConnection);
+    connect(ui->action_Save,SIGNAL(triggered()),SLOT(saveMeBabe()),Qt::UniqueConnection);
 }
 
 MainWindow::~MainWindow()
@@ -42,10 +47,52 @@ void MainWindow::slotPrintMenu()
     while(iterator.hasNext())
     {
         auto item =  iterator.next();
+
+
         item->accept(&visitor);
     }
 }
 
+QJsonArray MainWindow::writeJson(Composite* component)
+{
+    QJsonObject JsonObj;
+    QJsonArray JsonArray;
+    for( int i =0; i < component->subitemsCount(); ++i)
+    {
+        if( component->child(i)->TreeType()=="Menu")
+        {
+            Menu* temp = dynamic_cast<Menu*>(component->child(i));
+            JsonObj["type"] = "Menu";
+            JsonObj["title"]= temp->title().c_str();
+           JsonObj["children"] = writeJson(component->child(i));
+        }
+        else
+        {
+            MenuItem* temp = dynamic_cast<MenuItem*>(component->child(i));
+            JsonObj["type"] = "MenuItem";
+            JsonObj["title"]= temp->title().c_str();
+            JsonObj["price"]  = temp->price();
+            JsonObj["description"] = temp->description().c_str();
+        }
+
+        JsonArray.append(JsonObj);
+    }
+    return JsonArray;
+}
+
+void MainWindow::saveMeBabe()
+{
+    QString lFileName = QFileDialog::getSaveFileName(this, tr("Save file"),"Menu",
+                                                  tr("JSON files (*.json)"));
+       QJsonObject ObjectToSave;
+       ObjectToSave["type"] = "Menu";
+     ObjectToSave["title"] = "MAIN MENU";
+     ObjectToSave["children"] = writeJson(mRoot);
+      QJsonDocument mainDoc(ObjectToSave);
+         QFile jsonFile(lFileName); //provides an interface for reading from and writing to files.
+            jsonFile.open(QFile::WriteOnly);
+             jsonFile.write(mainDoc.toJson());
+}
 void MainWindow::menuElementSelected()
 {
     ui->savePushButton->setEnabled(false);
