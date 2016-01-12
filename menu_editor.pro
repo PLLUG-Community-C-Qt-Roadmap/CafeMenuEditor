@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+QT += core
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = menu_editor
@@ -35,6 +35,7 @@ HEADERS  += mainwindow.h \
     texteditprintmenuvisitor.h \
     menucombobox.h \
     editordelegate.h \
+    ui_adddialog.h \
     adddialog.h
 
 FORMS    += mainwindow.ui \

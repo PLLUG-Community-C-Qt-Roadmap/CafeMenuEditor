@@ -5,7 +5,7 @@
  * \brief Composite::Composite constructor
  * \param pTitle is item's title.
  */
-Composite::Composite(const std::string &pTitle)
+Composite::Composite(const std::string &pTitle) //дали компоненту якусь назву і занулили вказівник
     : mTitle(pTitle),
       mParent(nullptr)
 {
@@ -14,7 +14,7 @@ Composite::Composite(const std::string &pTitle)
 /*!
  * \brief Composite::~Composite destructor
  */
-Composite::~Composite()
+Composite::~Composite() //деструктор
 {
     for (const auto &subitem : mListSubitems)
     {
@@ -73,8 +73,15 @@ std::string Composite::title() const
 {
     return mTitle;
 }
-
+std::string Composite::TreeType() const
+{
+    return mTreeType;
+}
 void Composite::setTitle(const std::string &title)
 {
     mTitle = title;
+}
+void Composite::setTreeType(const std::string &type)
+{
+    mTreeType = type;
 }

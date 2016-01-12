@@ -8,6 +8,7 @@
 Menu::Menu(const std::string &pTitle)
     : Composite(pTitle)
 {
+    setTreeType("Menu");
 }
 
 /*!
